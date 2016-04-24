@@ -1,17 +1,17 @@
-# commandeer
+# text-commander
 
-tiny library for text-based interactions (e.g. MUDs, text-based adventure games, ..)
+tiny library for text-based interactions (e.g. MUDs, text-based adventure games, etc)
 
 ## install
 
 ```javascript
-npm install commandeer
+npm install text-commander
 ```
 
 ## use
 
 ```javascript
-var cmdr = commandeer([
+var cmdr = require('text-commander')([
   {
     '/look at {thing}': (obj) => {
       console.log(`looking at ${obj.thing}!`)
@@ -35,7 +35,7 @@ cmdr('/use glove on lever')
 **protip** you can use [es6 destructuring syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to make your functions a little nicer. e.g., 
 
 ```javascript
-var cmdr = commandeer([
+var cmdr = text-commander([
   {'link {thing} with {otherThing}': ({thing, otherThing}) => {
     // do stuff...
   }}
@@ -43,9 +43,9 @@ var cmdr = commandeer([
 ```
 ## api
 
-### var cmdr = commander([ {'some {template}': ({template}) => { }}, ... ])
+### var cmdr = require('text-commander')([ {'some {template}': ({template}) => { }}, ... ])
 
-commandeer takes a list of objects `{ templateString: function }`.  when `templateString` is matched, `function` will execute on the the template match. (see [templateer](https://www.npmjs.com/package/templateer), on which this is built)
+text-commander takes a list of objects `{ templateString: function }`.  when `templateString` is matched, `function` will execute on the the template match. (see [templateer](https://www.npmjs.com/package/templateer), on which this is built)
 
 ### cmdr('some command')
 

@@ -1,6 +1,8 @@
 {
+  "name": "text-commander",
   "author": "elsehow",
   "license": "BSD-3-Clause",
+  "description": "tiny library for text-based interactions (e.g. MUDs, text-based adventure games, etc)",
   "main": "src/index.js",
   "watch": {
     "test": "*.js"
@@ -15,5 +17,25 @@
     "tape": "^4.5.1",
     "templateer": "^1.0.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "version": "1.0.0",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elsehow/text-commander.git"
+  },
+  "keywords": [
+    "text",
+    "command",
+    "MUD",
+    "template",
+    "TUI",
+    "CLI"
+  ],
+  "bugs": {
+    "url": "https://github.com/elsehow/text-commander/issues"
+  },
+  "homepage": "https://github.com/elsehow/text-commander#readme"
 }
