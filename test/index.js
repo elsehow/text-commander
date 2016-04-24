@@ -36,15 +36,20 @@ test('will respect iteration order, matching one command at a time', t=>{
 
 // nice to have
 
-//test('check that input is a list', t => {
-//  t.throws(
-//    commandeer({
-//      '{thing}': ({thing}) => console.log('woo')
-//    })
-//  )
-//  t.end()
-//})
+test('check that input is a list', t => {
+  t.throws(() => {
+    commandeer({
+      '{thing}': ({thing}) => console.log('woo')
+    })
+  })
+  t.end()
+})
 
 test('check each item in list for schema', t => {
+  t.throws( () => {
+    commandeer([{
+      'some {thing}': 'not a fn'
+    }])
+  })
   t.end()
 })

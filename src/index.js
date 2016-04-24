@@ -15,10 +15,10 @@ module.exports = (templates) => {
   // TODO turn each string in `templates` into a templateer string
   let matchers = templates.map(t => {
     let templateString = firstKey(t)
-    if (typeof templateString !== 'string')
+    if (!templateString)
       throw seeFormatError
     let f = firstVal(t)
-    if (typeof f !== 'function')
+    if (typeof f !== 'function' || !f)
       throw seeFormatError
     let mtchr = templateer(templateString)
     return {
