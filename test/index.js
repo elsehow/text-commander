@@ -7,13 +7,31 @@ test('import comandeer function', t=> {
 })
 
 test('can pass in a list of objects {template: fn}', t=>{
+  t.plan(6)
   var cmdr = commandeer([
     {'fall through the {thing}': ({thing}) => {
-      t.deepEqual(thing, 'book')
-      t.end()
+      t.deepEqual(thing, 'book', 'fall through book')
+    }},
+    {'look at {thing}': ({thing}) => {
+      t.deepEqual(thing, 'pedestal', 'look at pedestal')
+    }},
+    {'look': () => {
+      t.ok(true, 'look')
     }}
   ])
-  cmdr('fall through the book')
+  t.ok(cmdr('look'), 'returns truthy if match found')
+  t.ok(cmdr('look at pedestal'), 'returns truthy if match found')
+  t.ok(cmdr('fall through the book'), 'returns truthy if match found')
+})
+
+test('cmdr will return false if no match is found', t=>{
+  var cmdr = commandeer([
+    {'fall through the {thing}': ({thing}) => {
+      t.deepEqual(thing, 'book', 'fall through book')
+    }}
+  ])
+  t.notOk(cmdr('look at book'))
+  t.end()
 })
 
 test('will respect iteration order, matching one command at a time', t=>{

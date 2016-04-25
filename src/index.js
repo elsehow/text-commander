@@ -32,9 +32,9 @@ module.exports = (templates) => {
       let m = matcher.matcher(cmd)
       if (m) {
         matcher.fn(m)
-        return
+        return m
       }
     }
-    return
+    return false
   }
 }

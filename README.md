@@ -51,6 +51,8 @@ text-commander takes a list of objects `{ templateString: function }`.  when `te
 
 will try to match each template string, **in order**, executing the appropriate function if a match is found.
 
+**if no match is found, cmdr will return `false`**. otherwise, cmdr will return the match object (a truthy value, the same object passed into the command's listed function).
+
 ## license
 
 BSD
