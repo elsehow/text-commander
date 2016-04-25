@@ -35,7 +35,7 @@ cmdr('/use glove on lever')
 **protip** you can use [es6 destructuring syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to make your functions a little nicer. e.g., 
 
 ```javascript
-var cmdr = text-commander([
+var cmdr = require('text-commander')([
   {'link {thing} with {otherThing}': ({thing, otherThing}) => {
     // do stuff...
   }}
