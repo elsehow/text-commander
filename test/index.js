@@ -11,20 +11,29 @@ test('can pass in a list of objects {template: fn}', t=>{
   var cmdr = commandeer([
     {'fall through the {thing}': ({thing}) => {
       t.deepEqual(thing, 'book', 'fall through book')
+      return 'falling through the book'
     }},
     {'look at {thing}': ({thing}) => {
       t.deepEqual(thing, 'pedestal', 'look at pedestal')
+      return 'looking at pedestal'
     }},
     {'look': () => {
       t.ok(true, 'look')
+      return 'just looking'
     }}
   ])
-  t.ok(cmdr('look'), 'returns truthy if match found')
-  t.ok(cmdr('look at pedestal'), 'returns truthy if match found')
-  t.ok(cmdr('fall through the book'), 'returns truthy if match found')
+  t.deepEqual(
+    cmdr('look'),
+    'just looking')
+  t.deepEqual(
+    cmdr('look at pedestal'),
+    'looking at pedestal')
+  t.deepEqual(
+    cmdr('fall through the book'),
+    'falling through the book')
 })
 
-test('cmdr will return false if no match is found', t=>{
+test('cmdr will return falsey if no match is found', t=>{
   var cmdr = commandeer([
     {'fall through the {thing}': ({thing}) => {
       t.deepEqual(thing, 'book', 'fall through book')

@@ -14,19 +14,19 @@ npm install text-commander
 var cmdr = require('text-commander')([
   {
     '/look at {thing}': (obj) => {
-      console.log(`looking at ${obj.thing}!`)
+      return `looking at ${obj.thing}!`
     }
   },
   {
     '/use {thing} on {otherThing}': (obj) => {
-      console.log(`using ${obj.thing} on ${obj.otherThing}!`)
+      return `using ${obj.thing} on ${obj.otherThing}!`
     }
   }
 ])
 
-cmdr('/look at sun')
+console.log(cmdr('/look at sun'))
 // looking at sun!
-cmdr('/use glove on lever')
+console.log(cmdr('/use glove on lever'))
 // using glove on lever!
 ```
 
@@ -38,6 +38,7 @@ cmdr('/use glove on lever')
 var cmdr = require('text-commander')([
   {'link {thing} with {otherThing}': ({thing, otherThing}) => {
     // do stuff...
+    // return stuff...
   }}
 ])
 ```
@@ -49,9 +50,11 @@ text-commander takes a list of objects `{ templateString: function }`.  when `te
 
 ### cmdr('some command')
 
-will try to match each template string, **in order**, executing the appropriate function if a match is found.
+will try to match each template string, **in order**, executing the appropriate function if a match is found. 
 
-**if no match is found, cmdr will return `false`**. otherwise, cmdr will return the match object (a truthy value, the same object passed into the command's listed function).
+cmdr will pass the match object as arguments to the appropriate function, and return whatever that function returns.
+
+**if no match is found, cmdr will return `undefined`**. 
 
 ## license
 

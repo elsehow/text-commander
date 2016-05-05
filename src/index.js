@@ -8,11 +8,11 @@ var seeFormatError = new Error('Commandeer: argument to commandeer should be a l
 
 module.exports = (templates) => {
 
-  // TODO verify that template is an ok format
+  // verify that template is an ok format
   if (!templates.length)
     throw seeFormatError
 
-  // TODO turn each string in `templates` into a templateer string
+  // turn each string in `templates` into a templateer string
   let matchers = templates.map(t => {
     let templateString = firstKey(t)
     if (!templateString)
@@ -31,10 +31,9 @@ module.exports = (templates) => {
     for (let matcher of matchers) {
       let m = matcher.matcher(cmd)
       if (m) {
-        matcher.fn(m)
-        return m
+        return matcher.fn(m)
       }
     }
-    return false
+    return
   }
 }
